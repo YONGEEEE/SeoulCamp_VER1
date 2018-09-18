@@ -33,7 +33,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBGPRego47FUlBZFZITsXAVEWtvhyRjA2M" />
 
-        <activity android:name="com.camping.seoul.seoulcamp.Intro_Activity"></activity>
+        <activity android:name=".Intro_Activity"></activity>
     </application>
 
 

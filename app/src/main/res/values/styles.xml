@@ -11,5 +11,8 @@
     </style>
 
     <style name="MyDialogStyle" parent="Theme.AppCompat.Light.Dialog"/>
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+    </style>
 
 </resources>
