@@ -106,7 +106,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:letterSpacing="0.025"
-                    android:text="Google Maps is a web mapping service developed by Google. It offers satellite imagery, street maps, 360° panoramic views of streets, real-time traffic conditions, and route planning for traveling by foot, car, bicycle, or public transportation.\nGoogle Maps is a web mapping service developed by Google. It offers satellite imagery, street maps, 360° panoramic views of streets, real-time traffic conditions, and route planning for traveling by foot, car, bicycle, or public transportation."
+                    android:text="상세설명1"
                     android:textColor="#606674"
                     android:textSize="12dp" />
                 <!-- 정보 2 -->
@@ -119,7 +119,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
                     android:letterSpacing="0.025"
-                    android:text="Google Maps is a web mapping service developed by Google. It offers satellite imagery, street maps, 360° panoramic views of streets, real-time traffic conditions, and route planning for traveling by foot, car, bicycle, or public transportation.\nGoogle Maps is a web mapping service developed by Google. It offers satellite imagery, street maps, 360° panoramic views of streets, real-time traffic conditions, and route planning for traveling by foot, car, bicycle, or public transportation."
+                    android:text="상세설명2"
                     android:textColor="#606674"
                     android:textSize="12dp" />
                 <!-- 지도에 해당하는 부분 -->
@@ -145,7 +145,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="10dp"
                     android:letterSpacing="0.025"
-                    android:text="Google Maps is a web mapping service developed by Google. It offers satellite imagery, street maps, 360° panoramic views of streets, real-time traffic conditions, and route planning for traveling by foot, car, bicycle, or public transportation.\nGoogle Maps is a web mapping service developed by Google. It offers satellite imagery, street maps, 360° panoramic views of streets, real-time traffic conditions, and route planning for traveling by foot, car, bicycle, or public transportation."
+                    android:text="상세설명3"
                     android:textColor="#606674"
                     android:textSize="12dp" />
 

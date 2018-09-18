@@ -14,11 +14,12 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class NetworkTask_GetList extends AsyncTask<String,Void,List<CommentItem>> {
+public class
+NetworkTask_GetList extends AsyncTask<String, Void, List<CommentItem>> {
     @Override
     protected List<CommentItem> doInBackground(String... voids) {
         String url = "http://192.168.0.19:8080/comment/listAll";
-        String queryurl = url+"?camp="+voids[0];
+        String queryurl = url + "?camp=" + voids[0];
         String bodyStr = "";
 
         OkHttpClient client = new OkHttpClient();
@@ -30,13 +31,13 @@ public class NetworkTask_GetList extends AsyncTask<String,Void,List<CommentItem>
         try {
             response = client.newCall(request).execute();
             bodyStr = response.body().string();
-            Log.d("response",bodyStr);
+            Log.d("response", bodyStr);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         Gson gson = new Gson();
-        CommentItem[] array = gson.fromJson(bodyStr,CommentItem[].class);
+        CommentItem[] array = gson.fromJson(bodyStr, CommentItem[].class);
         List<CommentItem> list = Arrays.asList(array);
 
         return list;

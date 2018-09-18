@@ -14,34 +14,35 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class NetworkTask_AddList extends AsyncTask <CommentItem,Void,Integer>{
+public class NetworkTask_AddList extends AsyncTask<CommentItem, Void, Integer> {
 
 
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
+
     @Override
     protected Integer doInBackground(CommentItem... voids) {
 
-        String url="http://192.168.0.19:8080/comment/addList";
+        String url = "http://192.168.0.19:8080/comment/addList";
         /* Tojson */
 
         String json;
 
         Gson gson = new Gson();
         JsonObject object = new JsonObject();
-        object.addProperty("camp",voids[0].getCamp());
-        object.addProperty("id",voids[0].getId());
-        object.addProperty("name","test");
-        object.addProperty("text",voids[0].getText());
-        object.addProperty("star",voids[0].getStar());
-        object.addProperty("password",voids[0].getPassword());
+        object.addProperty("camp", voids[0].getCamp());
+        object.addProperty("id", voids[0].getId());
+        object.addProperty("name", "test");
+        object.addProperty("text", voids[0].getText());
+        object.addProperty("star", voids[0].getStar());
+        object.addProperty("password", voids[0].getPassword());
 
         json = gson.toJson(object);
 
         /*--------------*/
 
         OkHttpClient okHttpClient = new OkHttpClient();
-        RequestBody body = RequestBody.create(JSON,json);
+        RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
                 .url(url)
                 .post(body)

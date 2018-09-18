@@ -14,7 +14,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class NetworkTask_DelList extends AsyncTask<CommentItem,Void,Integer>{
+public class NetworkTask_DelList extends AsyncTask<CommentItem, Void, Integer> {
 
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     String url = "http://192.168.0.19:8080/comment/delList";
@@ -24,10 +24,10 @@ public class NetworkTask_DelList extends AsyncTask<CommentItem,Void,Integer>{
     protected Integer doInBackground(CommentItem... commentItems) {
         Gson gson = new Gson();
         JsonObject object = new JsonObject();
-        object.addProperty("num",commentItems[0].getNum());
-        object.addProperty("password",commentItems[0].getPassword());
+        object.addProperty("num", commentItems[0].getNum());
+        object.addProperty("password", commentItems[0].getPassword());
         json = gson.toJson(object);
-        RequestBody body = RequestBody.create(JSON,json);
+        RequestBody body = RequestBody.create(JSON, json);
         OkHttpClient okHttpClient = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(url)

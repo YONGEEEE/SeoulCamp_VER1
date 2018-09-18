@@ -18,9 +18,6 @@ import adapter.RecycleAdapter_camplist;
 import object.CampData;
 
 
-/**
- * Created by Wolf Soft on 10/10/2017.
- */
 
 public class NearByFragment extends Fragment {
 

@@ -16,6 +16,7 @@ import okhttp3.Response;
 public class JsonParser_WeatherMore extends AsyncTask<Void, Void, ArrayList<WeatherMore>> {
 
     ArrayList<WeatherMore> data = new ArrayList<WeatherMore>();
+
     protected ArrayList<WeatherMore> doInBackground(Void... voids) {
         String url = "http://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp?stnId=109";
 
@@ -34,7 +35,7 @@ public class JsonParser_WeatherMore extends AsyncTask<Void, Void, ArrayList<Weat
             e.printStackTrace();
         }
 
-        return data ;
+        return data;
     }
 
 
@@ -50,7 +51,6 @@ public class JsonParser_WeatherMore extends AsyncTask<Void, Void, ArrayList<Weat
             boolean onEnd = false;
             boolean isItemTag1 = false;
             int i = 0;
-
 
 
             XmlPullParserFactory factory = XmlPullParserFactory.newInstance();

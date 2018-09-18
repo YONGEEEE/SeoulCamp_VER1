@@ -24,9 +24,7 @@ import apiParser.JsonParser;
 import object.CampData;
 
 
-/**
- * Created by Rp on 6/14/2016.
- */
+
 public class RecycleAdapter_camplist extends RecyclerView.Adapter<RecycleAdapter_camplist.MyViewHolder> {
 
     Context context;

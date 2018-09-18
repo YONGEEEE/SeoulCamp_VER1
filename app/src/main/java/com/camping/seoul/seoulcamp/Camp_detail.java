@@ -55,9 +55,7 @@ import listview.CommentItemView;
 import weather.WeatherInfo;
 import weather.WeatherInfo2;
 
-/**
- * Created by wolfsoft4 on 22/1/18.
- */
+
 
 public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -81,7 +79,6 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
     RatingBar ratingBar;
     TextView password;
     /* 끝 */
-
 
     EditText editComment;
     CampData index;
@@ -142,8 +139,8 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
         ratingBar = findViewById(R.id.ratingBar);
         adapter = new CommentAdapter();
         listView = findViewById(R.id.listView);
-        password =(TextView) findViewById(R.id.password);
-        password.setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        password = (TextView) findViewById(R.id.password);
+        password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
 
         setList();
@@ -159,7 +156,7 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) { // 토스트 메세지 ( 리스트 뷰 클릭시 )
-                Log.d("getpw",list.get(position).toString());
+                Log.d("getpw", list.get(position).toString());
                 show(list.get(position));
             }
         });
@@ -174,16 +171,11 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
                 String pw;
                 if (editComment.getText().toString().length() == 0) {
                     Toast.makeText(Camp_detail.this, "내용을 입력하지 않았습니다.", Toast.LENGTH_SHORT).show();
-                }
-                else if(password.getText().toString().length() == 0)
-                {
+                } else if (password.getText().toString().length() == 0) {
                     Toast.makeText(Camp_detail.this, "비밀번호를 입력하시지 않으셨습니다.", Toast.LENGTH_SHORT).show();
-                }
-                else if(password.getText().toString().length() != 0)
-                {
+                } else if (password.getText().toString().length() != 0) {
                     Toast.makeText(Camp_detail.this, "4자리 비밀번호를 입력하지 않았습니다.", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     WifiManager mwifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
                     WifiInfo info = mwifi.getConnectionInfo();
                     id = info.getMacAddress(); // 핸드폰 맥주소 가져오기
@@ -232,13 +224,13 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
         });
     }
 
-    public void setList(){//리스트뷰 구현
-        list=null;
+    public void setList() {//리스트뷰 구현
+        list = null;
         try {
-            if(list!=null) {
+            if (list != null) {
                 list.clear();
             }
-            Log.d("index.getID()",index.getId());
+            Log.d("index.getID()", index.getId());
             list = new NetworkTask_GetList().execute(index.getId()).get();
         } catch (ExecutionException e) {
             e.printStackTrace();
@@ -253,16 +245,14 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
         showComment();
     }
 
-    class CampingPagerAdapter extends FragmentStatePagerAdapter
-    {
+    class CampingPagerAdapter extends FragmentStatePagerAdapter {
         ArrayList<Fragment> items = new ArrayList<Fragment>();
-        public CampingPagerAdapter(FragmentManager fm)
-        {
+
+        public CampingPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
-        public void addItem(Fragment item)
-        {
+        public void addItem(Fragment item) {
             items.add(item);
         }
 
@@ -379,8 +369,7 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
             return view;
         }
 
-        public void setInit()
-        {
+        public void setInit() {
             items.clear();
         }
     }
@@ -418,25 +407,24 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
         listView.setLayoutParams(params);
         listView.requestLayout();
     }
-    public void show(final CommentItem cm)
-    {
+
+    public void show(final CommentItem cm) {
         final String dbPassword = cm.getPassword();
         final int num = cm.getNum();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this,R.style.MyDialogStyle);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyDialogStyle);
         builder.setTitle("삭제");
         builder.setMessage("정말로 삭제하시겠습니까?");
 
         final EditText editPassword = new EditText(this);
         editPassword.setHint("4자리를 입력하세요.");
-        editPassword.setPadding(80,0,0,0);
+        editPassword.setPadding(80, 0, 0, 0);
         builder.setView(editPassword);
 
         builder.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String inputPassword = editPassword.getText().toString();
-                if(inputPassword.equals(dbPassword))
-                {
+                if (inputPassword.equals(dbPassword)) {
                     Toast.makeText(getApplicationContext(), "비밀번호 일치.", Toast.LENGTH_SHORT).show();
                     try {
                         Integer n = new NetworkTask_DelList().execute(cm).get();
@@ -446,14 +434,12 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "비밀번호 불일치\ninputPassword="+inputPassword+"\ndbpassword="+dbPassword, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "비밀번호 불일치\ninputPassword=" + inputPassword + "\ndbpassword=" + dbPassword, Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        builder.setNegativeButton("취소",new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 Toast.makeText(getApplicationContext(), "취소", Toast.LENGTH_SHORT).show();
             }
