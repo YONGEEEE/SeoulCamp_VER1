@@ -173,7 +173,7 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
                     Toast.makeText(Camp_detail.this, "내용을 입력하지 않았습니다.", Toast.LENGTH_SHORT).show();
                 } else if (password.getText().toString().length() == 0) {
                     Toast.makeText(Camp_detail.this, "비밀번호를 입력하시지 않으셨습니다.", Toast.LENGTH_SHORT).show();
-                } else if (password.getText().toString().length() != 0) {
+                } else if (password.getText().toString().length() < 4) {
                     Toast.makeText(Camp_detail.this, "4자리 비밀번호를 입력하지 않았습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     WifiManager mwifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
