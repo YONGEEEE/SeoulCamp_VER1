@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import listview.CommentItem;
 import okhttp3.MediaType;
@@ -17,7 +18,7 @@ import okhttp3.Response;
 public class NetworkTask_DelList extends AsyncTask<CommentItem, Void, Integer> {
 
     private static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    String url = "http://192.168.0.19:8080/comment/delList";
+    String url = "http://203.253.255.113:9090/comment/delList";
     String json;
 
     @Override
@@ -28,7 +29,9 @@ public class NetworkTask_DelList extends AsyncTask<CommentItem, Void, Integer> {
         object.addProperty("password", commentItems[0].getPassword());
         json = gson.toJson(object);
         RequestBody body = RequestBody.create(JSON, json);
-        OkHttpClient okHttpClient = new OkHttpClient();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().connectTimeout(1, TimeUnit.MINUTES)
+                .readTimeout(30,TimeUnit.SECONDS).writeTimeout(15,TimeUnit.SECONDS).build();
+
         Request request = new Request.Builder()
                 .url(url)
                 .post(body)

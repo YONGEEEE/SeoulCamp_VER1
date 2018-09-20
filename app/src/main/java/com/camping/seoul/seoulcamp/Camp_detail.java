@@ -185,6 +185,8 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
                     star = ratingBar.getRating();
                     type = index.getId();
                     pw = password.getText().toString();
+                    password.setText(null);
+                    editComment.setText(null);
                     try {
                         new NetworkTask_AddList().execute(new CommentItem(type, id, text, star, pw));
                         setList();
