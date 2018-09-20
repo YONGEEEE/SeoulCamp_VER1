@@ -46,6 +46,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import adapter.RecycleAdapter_camplist;
 import connectDB.NetworkTask_AddList;
 import connectDB.NetworkTask_DelList;
 import connectDB.NetworkTask_GetList;
@@ -101,7 +102,7 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
         value3 = (TextView) findViewById(R.id.value3);
         reservation = (Button) findViewById(R.id.reservation);
         calling = (Button) findViewById(R.id.calling);
-
+        image = (ImageView) findViewById(R.id.image);
         final ViewPager pager = (ViewPager) findViewById(R.id.weatherPager);
         pager.setOffscreenPageLimit(3); //프래그먼트를 미리 담아두기
 
@@ -126,6 +127,7 @@ public class Camp_detail extends AppCompatActivity implements OnMapReadyCallback
         telNum = index.getTel();
         x = index.getX();
         y = index.getY();
+        image.setImageResource(index.getImage());
 
 
         editComment = (EditText) findViewById(R.id.editComment);
